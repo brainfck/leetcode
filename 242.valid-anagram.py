@@ -7,23 +7,13 @@
 # @lc code=start
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t): return False
-        dict = {}
-        
-        for c in s:
-            if c in dict:
-                dict[c] += 1
-            else:
-                dict[c] = 1
-        
-        for c in t:
-            if c in dict:
-                dict[c] -= 1
-            else:
-                return False
-        
-        for key in dict:
-            if dict[key] < 0: return False
-        
-        return True
+        if len(s) != len(t):
+            return False
+
+        countS, countT = {}, {}
+
+        for i in range(len(s)):
+            countS[s[i]] = 1 + countS.get(s[i], 0)
+            countT[t[i]] = 1 + countT.get(t[i], 0)
+        return countS == countT
 # @lc code=end

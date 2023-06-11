@@ -7,12 +7,14 @@
 # @lc code=start
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        prevMap = {}
-        for i in range(len(nums)):
-            diff = target - nums[i]
+        prevMap = {}  # val -> index
+
+        for i, n in enumerate(nums):
+            diff = target - n
             if diff in prevMap:
                 return [prevMap[diff], i]
-            else:
-                prevMap[nums[i]] = i
+            prevMap[n] = i
+
+        return
 # @lc code=end
 
